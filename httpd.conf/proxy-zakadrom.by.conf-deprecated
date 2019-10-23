@@ -1,0 +1,15 @@
+<Virtualhost *:80>
+    ServerName        zakadrom.by
+    ProxyRequests     Off
+    ProxyPreserveHost On
+    AllowEncodedSlashes NoDecode
+
+    <Proxy http://localhost:8093/*>
+      Order deny,allow
+      Allow from all
+    </Proxy>
+
+    ProxyPass         /  http://localhost:8093/ nocanon
+    ProxyPassReverse  /  http://localhost:8093/
+    ProxyPassReverse  /  http://zakadrom.by/
+</Virtualhost>
